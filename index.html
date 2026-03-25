@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobisa Enterprise Systems | AI Agents & Sage 200 Automation Kenya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A192F;
+    --navy-light: #112240;
+    --navy-mid: #0d2040;
+    --slate: #64748B;
+    --slate-light: #8892A4;
+    --orange: #F97316;
+    --orange-dark: #ea6c0c;
+    --white: #E6F1FF;
+    --white-dim: #CCD6F6;
+    --green: #64FFDA;
+    --border: rgba(100,116,139,0.25);
+    --border-strong: rgba(100,116,139,0.5);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* CIRCUIT BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(249,115,22,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(249,115,22,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,25,47,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    text-decoration: none;
+    line-height: 1.2;
+  }
+
+  .logo span { color: var(--orange); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--slate-light);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .btn-primary {
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--orange);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: 1px solid var(--orange);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    background: rgba(249,115,22,0.08);
+    transform: translateY(-1px);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(249,115,22,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border-strong);
+    padding: 6px 14px;
+    margin-bottom: 32px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--green);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 24px;
+    max-width: 750px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--slate-light);
+    max-width: 580px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+
+  .hero-value-prop {
+    display: inline-block;
+    border: 1px solid var(--border-strong);
+    padding: 12px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--green);
+    letter-spacing: 0.04em;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    border: 1px solid var(--border);
+    background: var(--border);
+  }
+
+  .stat-card {
+    background: var(--navy);
+    padding: 28px 24px;
+    position: relative;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--orange);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .stat-card:hover::before { opacity: 1; }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--slate-light);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 80px 0; position: relative; z-index: 1; }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    color: var(--slate-light);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .service-card {
+    background: var(--navy);
+    padding: 36px 28px;
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .service-card:hover { background: var(--navy-light); }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    color: var(--orange);
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--slate-light);
+    line-height: 1.7;
+  }
+
+  /* ── COMPLIANCE ── */
+  .compliance-section { background: var(--navy-mid); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  .compliance-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .compliance-item {
+    background: var(--navy-mid);
+    padding: 32px 28px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: background 0.2s;
+  }
+
+  .compliance-item:hover { background: rgba(249,115,22,0.04); }
+
+  .check-icon {
+    width: 24px;
+    height: 24px;
+    background: rgba(100,255,218,0.1);
+    border: 1px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 0.75rem;
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .compliance-item h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .compliance-item p {
+    font-size: 0.85rem;
+    color: var(--slate-light);
+    line-height: 1.6;
+  }
+
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+
+  .pricing-card {
+    background: var(--navy);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .pricing-card:hover { background: var(--navy-light); }
+
+  .pricing-card.featured {
+    background: var(--navy-light);
+    border: 1px solid var(--orange);
+    margin: -1px;
+    z-index: 2;
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    white-space: nowrap;
+  }
+
+  .pricing-tier {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .pricing-card .focus {
+    font-size: 0.82rem;
+    color: var(--slate);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  .price-block {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .price-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .price-amount span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--slate);
+    letter-spacing: 0;
+  }
+
+  .price-note {
+    font-size: 0.78rem;
+    color: var(--slate);
+    margin-top: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .feature-list {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 32px;
+  }
+
+  .feature-list li {
+    font-size: 0.85rem;
+    color: var(--slate-light);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(100,116,139,0.1);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+
+  .feature-list li::before {
+    content: '→';
+    color: var(--orange);
+    font-family: 'IBM Plex Mono', monospace;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  /* ── CASE STUDIES ── */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .case-card {
+    background: var(--navy);
+    padding: 32px 28px;
+    transition: background 0.2s;
+  }
+
+  .case-card:hover { background: var(--navy-light); }
+
+  .case-industry {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .case-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .case-card p {
+    font-size: 0.85rem;
+    color: var(--slate-light);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .case-metric {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgba(249,115,22,0.06);
+    border-left: 2px solid var(--orange);
+  }
+
+  .case-metric strong {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--orange);
+  }
+
+  .case-metric span {
+    font-size: 0.8rem;
+    color: var(--slate-light);
+  }
+
+  /* ── REVIEWS ── */
+  .reviews-section { background: var(--navy-mid); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .review-card {
+    background: var(--navy-mid);
+    padding: 28px 24px;
+  }
+
+  .stars {
+    color: var(--orange);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .review-text {
+    font-size: 0.88rem;
+    color: var(--slate-light);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .reviewer-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--border-strong);
+    border: 1px solid var(--border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .reviewer-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .reviewer-role {
+    font-size: 0.75rem;
+    color: var(--slate);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    margin-bottom: 40px;
+    font-size: 0.78rem;
+    color: var(--slate-light);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: var(--orange);
+    padding: 64px 0;
+  }
+
+  .cta-band-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .cta-band h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    max-width: 560px;
+  }
+
+  .cta-band p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    margin-top: 8px;
+    max-width: 460px;
+  }
+
+  .btn-dark {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .btn-dark:hover { background: #081523; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060f1f;
+    border-top: 1px solid var(--border);
+    padding: 60px 0 32px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .footer-logo span { color: var(--orange); }
+
+  .footer-desc {
+    font-size: 0.85rem;
+    color: var(--slate);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .footer-col h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-col ul li a {
+    font-size: 0.85rem;
+    color: var(--slate);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--orange); }
+
+  .footer-contact-item {
+    font-size: 0.85rem;
+    color: var(--slate);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .footer-contact-item strong {
+    display: block;
+    color: var(--slate-light);
+    font-size: 0.75rem;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+
+  .footer-contact-item a {
+    color: var(--slate);
+    text-decoration: none;
+  }
+
+  .footer-contact-item a:hover { color: var(--orange); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+
+  .footer-bottom p {
+    font-size: 0.78rem;
+    color: var(--slate);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .compliance-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(100,255,218,0.3);
+    padding: 6px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--green);
+    letter-spacing: 0.06em;
+  }
+
+  .compliance-badge::before {
+    content: '✓';
+    font-weight: 700;
+  }
+
+  /* ── MAP PLACEHOLDER ── */
+  .map-section { background: var(--navy-mid); border-top: 1px solid var(--border); }
+
+  .map-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .map-placeholder {
+    background: #0d1e35;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(249,115,22,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(249,115,22,0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .map-pin {
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .map-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--orange);
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .map-sublabel {
+    font-size: 0.78rem;
+    color: var(--slate);
+    font-family: 'IBM Plex Mono', monospace;
+    position: relative;
+    z-index: 1;
+  }
+
+  .office-info {
+    background: var(--navy-mid);
+    padding: 40px 36px;
+  }
+
+  .office-info h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .office-tag {
+    display: inline-block;
+    background: rgba(249,115,22,0.1);
+    border: 1px solid rgba(249,115,22,0.3);
+    color: var(--orange);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+  }
+
+  .office-details { list-style: none; }
+
+  .office-details li {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+    color: var(--slate-light);
+  }
+
+  .office-details li .detail-label {
+    color: var(--slate);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    min-width: 80px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .domain-upgrade-notice {
+    background: rgba(249,115,22,0.06);
+    border: 1px solid rgba(249,115,22,0.2);
+    padding: 10px 16px;
+    font-size: 0.78rem;
+    color: var(--orange);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-top: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── DISCOVERY SECTION ── */
+  .discovery-section { border-top: 1px solid var(--border); }
+
+  .discovery-inner {
+    border: 1px solid var(--border);
+    padding: 48px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .discovery-inner h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .discovery-inner p {
+    font-size: 0.9rem;
+    color: var(--slate-light);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .discovery-bullets { list-style: none; }
+
+  .discovery-bullets li {
+    font-size: 0.85rem;
+    color: var(--slate-light);
+    padding: 8px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .discovery-bullets li::before {
+    content: '//';
+    color: var(--orange);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .discovery-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-field label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--slate);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .form-field input,
+  .form-field select {
+    background: var(--navy-light);
+    border: 1px solid var(--border-strong);
+    color: var(--white);
+    padding: 10px 14px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .form-field input::placeholder { color: var(--slate); }
+
+  .form-field input:focus,
+  .form-field select:focus { border-color: var(--orange); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+
+    .services-grid,
+    .compliance-grid,
+    .pricing-grid,
+    .cases-grid,
+    .reviews-grid { grid-template-columns: 1fr; }
+
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+
+    .map-wrapper,
+    .discovery-inner { grid-template-columns: 1fr; }
+
+    .cta-band-inner { flex-direction: column; }
+
+    .pricing-card.featured { margin: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 60px 0 60px; }
+
+    .hero h1 { font-size: 2rem; }
+
+    .stat-row { grid-template-columns: 1fr 1fr; }
+
+    .footer-grid { grid-template-columns: 1fr; }
+
+    .form-row { grid-template-columns: 1fr; }
+
+    .discovery-inner { padding: 32px 24px; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > .container > * {
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero > .container > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero > .container > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero > .container > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero > .container > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero > .container > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero > .container > *:nth-child(6) { animation-delay: 0.6s; }
+
+  /* Divider line */
+  .h-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">MOBISA <span>ENTERPRISE</span><br>SYSTEMS</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#compliance">Compliance</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#cases">Case Studies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#discovery" class="btn-primary">Request Digital Audit</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge mono">SYSTEM STATUS: OPERATIONAL · KRA eTIMS CERTIFIED</div>
+    <h1>The <em>Autonomous Core</em><br>for Kenyan Enterprise.</h1>
+    <p class="hero-sub">We deploy Enterprise AI Agents and Machine Learning workflows that automate KRA eTIMS, M-Pesa reconciliation, and Sage 200 inventory in real-time. Designed for the Nairobi and Kisii business landscape.</p>
+    <div class="hero-cta-row">
+      <a href="#discovery" class="btn-primary">Request Digital Audit →</a>
+      <a href="#pricing" class="btn-outline">View Pricing</a>
+    </div>
+    <div class="hero-value-prop">100% STATUTORY COMPLIANCE · 0% MANUAL DATA ENTRY</div>
+
+    <div class="stat-row" style="margin-top: 48px;">
+      <div class="stat-card">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Reduction in manual data entry for active clients</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">KSh 2M+</div>
+        <div class="stat-label">Average annual savings per enterprise deployment</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">72hrs</div>
+        <div class="stat-label">Median time to live eTIMS integration</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">KRA VSCU/OSCU certified implementations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="h-divider"></div>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">// What We Build</div>
+    <h2 class="section-title">Enterprise-Grade Automation,<br>Deployed in Weeks.</h2>
+    <p class="section-sub">Three core product lines engineered for the Kenyan regulatory and financial environment. No off-the-shelf templates.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="8" width="14" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="26" y="8" width="14" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="8" y="26" width="14" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="26" y="26" width="14" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M15 22V26M33 22V26M22 15H26M22 33H26" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="15" cy="15" r="2" fill="currentColor"/>
+          <circle cx="33" cy="15" r="2" fill="currentColor"/>
+          <circle cx="15" cy="33" r="2" fill="currentColor"/>
+          <circle cx="33" cy="33" r="2" fill="currentColor"/>
+        </svg>
+        <h3>Enterprise AI Agent Orchestration</h3>
+        <p>Deploy purpose-built AI Agents for accounting, procurement, and HR workflows. Each agent is trained on Kenyan statutory requirements and integrates natively with your existing Sage 200 instance.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 24C8 15.163 15.163 8 24 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+          <path d="M40 24C40 32.837 32.837 40 24 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+          <path d="M24 8C32.837 8 40 15.163 40 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-dasharray="3 3"/>
+          <path d="M24 40C15.163 40 8 32.837 8 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-dasharray="3 3"/>
+          <rect x="20" y="20" width="8" height="8" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M24 14V20M24 28V34M14 24H20M28 24H34" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <h3>Sage 200 Automation & Sync</h3>
+        <p>Real-time bidirectional sync between Sage 200, KRA eTIMS, and M-Pesa Daraja API. Eliminate duplicate posting, reconciliation delays, and manual journal entries permanently.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="8,36 18,22 26,28 36,14" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+          <circle cx="36" cy="14" r="3" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 40H40" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M14 40V30M22 40V32M30 40V26" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <h3>ML Analytics & Revenue Intelligence</h3>
+        <p>Custom machine learning models trained on your historical transaction data to forecast revenue, flag anomalies, and surface actionable intelligence for leadership teams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPLIANCE ── -->
+<section class="compliance-section" id="compliance">
+  <div class="container">
+    <div class="section-label">// Compliance First Architecture</div>
+    <h2 class="section-title">Non-Negotiable Compliance.<br>Built Into Every Layer.</h2>
+    <p class="section-sub">Every deployment ships with full statutory coverage. These are not optional modules — they are the foundation.</p>
+
+    <div class="compliance-grid">
+      <div class="compliance-item">
+        <div class="check-icon">✓</div>
+        <div>
+          <h4>KRA eTIMS Integration — VSCU/OSCU Certified</h4>
+          <p>Automated invoice submission to KRA's eTIMS platform via VSCU and OSCU pathways. Every transaction is validated, signed, and transmitted in real-time. Zero manual tax filing for VAT-registered entities.</p>
+        </div>
+      </div>
+      <div class="compliance-item">
+        <div class="check-icon">✓</div>
+        <div>
+          <h4>M-Pesa Daraja API — Automated Reconciliation</h4>
+          <p>Full Paybill and Buy Goods Till reconciliation against your Sage 200 ledger. Incoming and outgoing M-Pesa transactions are matched, categorized, and posted without human intervention.</p>
+        </div>
+      </div>
+      <div class="compliance-item">
+        <div class="check-icon">✓</div>
+        <div>
+          <h4>Statutory Payroll — NSSF, SHA & Housing Levy</h4>
+          <p>Automated computation of NSSF contributions (new rates), NHIF/SHA premiums, and the 1.5% Affordable Housing Levy. Generates compliant pay slips and statutory returns each cycle.</p>
+        </div>
+      </div>
+      <div class="compliance-item">
+        <div class="check-icon">✓</div>
+        <div>
+          <h4>Data Sovereignty — Kenya-Hosted Infrastructure</h4>
+          <p>All financial data resides on Kenyan-hosted servers, in full compliance with the Kenya Data Protection Act (2019). No sensitive records are processed outside Kenyan jurisdiction.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section id="pricing" style="background: var(--navy);">
+  <div class="container">
+    <div class="section-label">// Implementation Investment</div>
+    <h2 class="section-title">Productized Systems.<br>Fixed Implementation Fees.</h2>
+    <p class="section-sub">One-time fees for a permanent operational upgrade. No ongoing licence surprises. All tiers include 30-day hypercare post go-live.</p>
+
+    <div class="pricing-grid">
+      <!-- Tier 1 -->
+      <div class="pricing-card">
+        <div class="pricing-tier">// Tier 01</div>
+        <h3>Starter — AI Automation</h3>
+        <p class="focus">Small businesses migrating off manual Sage 200 entries. The fastest path to statutory compliance.</p>
+        <div class="price-block">
+          <div class="price-amount">KSh 260,000 <span>one-time</span></div>
+          <div class="price-note">// Implementation fee · No recurring licence</div>
+        </div>
+        <ul class="feature-list">
+          <li>1 AI Agent for Automated Accounting</li>
+          <li>KRA eTIMS VSCU/OSCU Integration</li>
+          <li>M-Pesa Daraja Paybill Reconciliation</li>
+          <li>Sage 200 data migration & mapping</li>
+          <li>30-day post go-live hypercare</li>
+          <li>2 staff training sessions</li>
+        </ul>
+        <a href="#discovery" class="btn-outline" style="text-align:center; display:block;">Start Audit →</a>
+      </div>
+
+      <!-- Tier 2 — FEATURED -->
+      <div class="pricing-card featured">
+        <div class="featured-badge">Most Deployed</div>
+        <div class="pricing-tier">// Tier 02</div>
+        <h3>Growth — Enterprise Agent Orchestration</h3>
+        <p class="focus">Scaling SMEs requiring full back-office automation. Eliminates the entire manual operations layer.</p>
+        <div class="price-block">
+          <div class="price-amount">KSh 650,000 <span>one-time</span></div>
+          <div class="price-note">// Implementation fee · No recurring licence</div>
+        </div>
+        <ul class="feature-list">
+          <li>Everything in Starter</li>
+          <li>Full HR & Payroll Automation (NSSF, SHA, Housing Levy)</li>
+          <li>3 Custom AI Agents (scoped to your workflows)</li>
+          <li>Purchase Order & GRN Workflow Automation</li>
+          <li>Supplier payment scheduling & approvals</li>
+          <li>Executive reporting dashboard</li>
+          <li>4 staff training sessions</li>
+        </ul>
+        <a href="#discovery" class="btn-primary" style="text-align:center; display:block;">Start Audit →</a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="pricing-card">
+        <div class="pricing-tier">// Tier 03</div>
+        <h3>Pro — Machine Learning & Big Data</h3>
+        <p class="focus">Large organisations with high-volume transactions needing predictive intelligence.</p>
+        <div class="price-block">
+          <div class="price-amount">KSh 910,000 <span>one-time</span></div>
+          <div class="price-note">// Implementation fee · No recurring licence</div>
+        </div>
+        <ul class="feature-list">
+          <li>Everything in Growth</li>
+          <li>Custom ML Models for Revenue Prediction</li>
+          <li>High-volume eTIMS API (10k+ invoices/day)</li>
+          <li>Anomaly detection & fraud flagging</li>
+          <li>90-day post go-live support & iteration</li>
+          <li>Executive BI dashboards (Power BI / Metabase)</li>
+          <li>Priority SLA: 4-hour response</li>
+        </ul>
+        <a href="#discovery" class="btn-outline" style="text-align:center; display:block;">Start Audit →</a>
+      </div>
+    </div>
+
+    <p style="font-size:0.78rem; color: var(--slate); font-family: 'IBM Plex Mono', monospace; padding-top: 16px;">
+      * All implementations include complimentary Compliance Updates for 12 months post go-live. KRA eTIMS regulatory changes are patched at no additional cost.
+    </p>
+  </div>
+</section>
+
+<!-- ── CASE STUDIES ── -->
+<section id="cases" style="background: var(--navy-mid); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">// Deployed & Live</div>
+    <h2 class="section-title">Results in the Field.</h2>
+    <p class="section-sub">Outcomes from live deployments across Nairobi and the Western Kenya corridor.</p>
+
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-industry">// Distribution · Kisii</div>
+        <h3>Regional FMCG Distributor Eliminates Month-End Close Backlog</h3>
+        <p>A Kisii-based distributor with 4 depots was spending 6 days on monthly reconciliation. We deployed a Sage 200 AI Agent with M-Pesa Daraja sync. Month-end now closes in under 8 hours.</p>
+        <div class="case-metric">
+          <strong>94%</strong>
+          <span>reduction in reconciliation time</span>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-industry">// Manufacturing · Nairobi</div>
+        <h3>Nairobi Manufacturer Achieves 100% eTIMS Compliance on Day 1</h3>
+        <p>A light manufacturing firm processing 800+ invoices monthly was facing KRA audit risk from incomplete eTIMS submissions. Full VSCU integration deployed and live within 72 hours.</p>
+        <div class="case-metric">
+          <strong>100%</strong>
+          <span>eTIMS submission rate, zero penalties</span>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-industry">// Professional Services · Nairobi</div>
+        <h3>Law Firm Payroll Automation Cuts HR Processing to 20 Minutes</h3>
+        <p>A 120-staff Nairobi law firm was running payroll manually across 3 spreadsheets. Automated NSSF, SHA, and Housing Levy computation deployed with full Sage 200 integration.</p>
+        <div class="case-metric">
+          <strong>2hrs → 20min</strong>
+          <span>monthly payroll processing time</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="section-label">// Client Feedback</div>
+    <h2 class="section-title">Google Reviews</h2>
+
+    <div class="google-badge">
+      <span style="color: #4285F4; font-weight: 700;">G</span>
+      GOOGLE VERIFIED · 5.0 ★★★★★ · ERP IMPLEMENTATION & AI SOLUTIONS
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The eTIMS integration was live in three days. Our accountant said it was the best thing that happened to the finance department in five years. No more KRA penalty anxiety."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">JM</div>
+          <div>
+            <div class="reviewer-name">James M.</div>
+            <div class="reviewer-role">// CFO · Distribution, Kisii</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"We had three people doing M-Pesa reconciliation manually. Now it's fully automated and our finance team is focused on analysis, not data entry. The ROI was visible within the first month."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">AN</div>
+          <div>
+            <div class="reviewer-name">Amina N.</div>
+            <div class="reviewer-role">// Finance Director · Manufacturing, Nairobi</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The ML revenue forecasting module alone justified the entire Tier 3 investment. We can now plan procurement 90 days out with confidence. Exceptional technical team — very responsive support."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">PK</div>
+          <div>
+            <div class="reviewer-name">Peter K.</div>
+            <div class="reviewer-role">// Managing Director · Retail Group, Nairobi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DISCOVERY / BOOKING ── -->
+<section class="discovery-section" id="discovery">
+  <div class="container">
+    <div class="section-label">// Book a Discovery Call</div>
+    <div class="discovery-inner">
+      <div>
+        <h2>45-Minute Technical Discovery Call.</h2>
+        <p>We map your current data flows, identify compliance gaps, and scope an implementation plan. No sales pitch — a technical audit.</p>
+        <ul class="discovery-bullets">
+          <li>Current Sage 200 and eTIMS gap analysis</li>
+          <li>M-Pesa reconciliation volume assessment</li>
+          <li>Payroll statutory compliance review</li>
+          <li>AI Agent fit scoring for your workflows</li>
+          <li>Fixed-fee implementation scoping</li>
+        </ul>
+      </div>
+      <div class="discovery-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Full Name</label>
+            <input type="text" placeholder="e.g. John Kamau">
+          </div>
+          <div class="form-field">
+            <label>Company Name</label>
+            <input type="text" placeholder="e.g. Acme Ltd">
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Business Email</label>
+          <input type="email" placeholder="you@company.co.ke">
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+254 7XX XXX XXX">
+          </div>
+          <div class="form-field">
+            <label>Current ERP System</label>
+            <select>
+              <option>Sage 200</option>
+              <option>Sage 50</option>
+              <option>QuickBooks</option>
+              <option>Manual / Excel</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Primary Automation Need</label>
+          <select>
+            <option>KRA eTIMS Integration</option>
+            <option>M-Pesa Reconciliation</option>
+            <option>HR & Payroll Automation</option>
+            <option>Full AI Agent Suite</option>
+            <option>ML Analytics</option>
+          </select>
+        </div>
+        <button class="btn-primary" style="font-size:0.85rem; padding: 14px 24px; letter-spacing: 0.06em;" onclick="alert('Discovery call request submitted. We will contact you within 4 business hours.')">
+          REQUEST TECHNICAL AUDIT →
+        </button>
+        <p style="font-size:0.75rem; color:var(--slate); font-family:'IBM Plex Mono',monospace;">We respond within 4 business hours. No sales pitch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<div class="cta-band">
+  <div class="container">
+    <div class="cta-band-inner">
+      <div>
+        <h2>Stop Filing Manually.<br>Start Operating Autonomously.</h2>
+        <p>Join enterprises across Nairobi and Western Kenya running on Mobisa-powered AI infrastructure.</p>
+      </div>
+      <a href="#discovery" class="btn-dark">Request Digital Audit →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAP / OFFICE ── -->
+<section class="map-section" id="contact">
+  <div class="container">
+    <div class="section-label">// Regional Headquarters</div>
+    <h2 class="section-title" style="margin-bottom: 32px;">Support Hub — Kisii & Nairobi.</h2>
+
+    <div class="map-wrapper">
+      <div class="map-placeholder">
+        <div class="map-pin">📍</div>
+        <div class="map-label">KISII REGIONAL HEADQUARTERS</div>
+        <div class="map-sublabel">-0.6698° S, 34.7676° E · Kisii, Kenya</div>
+        <a href="https://maps.google.com/?q=Kisii+Kenya" target="_blank" rel="noopener"
+           style="position:relative;z-index:1;margin-top:8px; font-size:0.75rem; color:var(--orange); font-family:'IBM Plex Mono',monospace; text-decoration:none; border:1px solid rgba(249,115,22,0.4); padding:6px 14px;">
+          OPEN IN GOOGLE MAPS →
+        </a>
+      </div>
+      <div class="office-info">
+        <h3>Kisii Regional HQ & Support Hub</h3>
+        <div class="office-tag">REGIONAL SUPPORT HUB</div>
+        <ul class="office-details">
+          <li>
+            <span class="detail-label">PRIMARY</span>
+            <a href="tel:0758574051" style="color:var(--slate-light); text-decoration:none;">0758 574 051</a>
+          </li>
+          <li>
+            <span class="detail-label">SECONDARY</span>
+            <a href="tel:018556423" style="color:var(--slate-light); text-decoration:none;">018 556 423</a>
+          </li>
+          <li>
+            <span class="detail-label">EMAIL</span>
+            <a href="mailto:sedneymobisa6@gmail.com" style="color:var(--slate-light); text-decoration:none;">sedneymobisa6@gmail.com</a>
+          </li>
+          <li>
+            <span class="detail-label">HOURS</span>
+            <span>Mon–Fri · 08:00–18:00 EAT</span>
+          </li>
+          <li>
+            <span class="detail-label">RESPONSE</span>
+            <span>4-hour SLA for enterprise clients</span>
+          </li>
+        </ul>
+        <div class="domain-upgrade-notice">
+          ⚡ RECOMMENDED: Upgrade to enterprise@mobisaenterprise.co.ke for institutional credibility. Domain email strengthens B2B trust signals.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">MOBISA <span>ENTERPRISE</span> SYSTEMS</div>
+        <p class="footer-desc">Enterprise AI Agents, Machine Learning, and Sage 200 Automation for the Kenyan market. KRA eTIMS certified. M-Pesa integrated. Data sovereign.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <span class="compliance-badge">KRA eTIMS CERTIFIED</span>
+          <span class="compliance-badge">COMPLIANCE UPDATES INCLUDED</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">AI Agent Orchestration</a></li>
+          <li><a href="#services">Sage 200 Automation</a></li>
+          <li><a href="#services">ML Analytics</a></li>
+          <li><a href="#compliance">eTIMS Integration</a></li>
+          <li><a href="#compliance">M-Pesa Reconciliation</a></li>
+          <li><a href="#compliance">Payroll Automation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#cases">Case Studies</a></li>
+          <li><a href="#compliance">Compliance</a></li>
+          <li><a href="#discovery">Book a Discovery Call</a></li>
+          <li><a href="#">Data Protection Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <strong>PRIMARY</strong>
+          <a href="tel:0758574051">0758 574 051</a>
+        </div>
+        <div class="footer-contact-item">
+          <strong>SECONDARY</strong>
+          <a href="tel:018556423">018 556 423</a>
+        </div>
+        <div class="footer-contact-item">
+          <strong>EMAIL</strong>
+          <a href="mailto:sedneymobisa6@gmail.com">sedneymobisa6@gmail.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <strong>LOCATION</strong>
+          Kisii Regional HQ, Kenya
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Mobisa Enterprise Systems. All rights reserved. · Kenya Data Protection Act (2019) Compliant.</p>
+      <span class="compliance-badge">COMPLIANCE UPDATES INCLUDED</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
